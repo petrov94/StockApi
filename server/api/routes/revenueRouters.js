@@ -1,11 +1,11 @@
 const  express = require('express');
 const  router = express.Router();
-const  controller = require('../controllers/stockPricesController');
+const  controller = require('../controllers/revenueController');
 const  auth = require('../../auth/auth');
 const  tickerSymbol = require('../../middlewares/checkTickerSymbol');
 /**
- * Stock Prices router responsible for authentication and validation of http request data and if a valid data is provided
- * to trigger the Stock Price Controller responsible for handling the http request.
+ * Revenue router responsible for authentication and validation of http request data and if a valid data is provided
+ * to trigger the Revenue Controller responsible for handling the http request.
  */
 router.route('/:name')
 .get(auth,tickerSymbol,controller.get)

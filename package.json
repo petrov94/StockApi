@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha ./tests/services/**"
+    "test": "DEBUG=true nyc mocha ./tests/**/*Test.js --exit --inspect=0.0.0.0:9229 -timeout 120000"
   },
   "dependencies": {
     "@okta/jwt-verifier": "^1.0.0",
@@ -13,23 +13,25 @@
     "all": "0.0.0",
     "axios": "^0.19.2",
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "check-ticker-symbol": "^1.0.0",
     "colors": "^1.4.0",
-    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^6.0.0",
     "express": "^4.16.1",
+    "express-winston": "^4.0.3",
     "http-errors": "~1.6.3",
     "jwks-rsa": "^1.8.0",
-    "mocha": "^7.1.2",
+    "mocha": "^7.2.0",
     "morgan": "^1.10.0",
     "pug": "^2.0.4",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.18.1",
     "chai": "^4.2.0",
-    "mocha": "^7.1.2",
-    "moxios": "^0.4.0"
+    "moxios": "^0.4.0",
+    "nyc": "^15.0.1"
   }
 }

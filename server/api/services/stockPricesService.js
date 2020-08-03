@@ -1,16 +1,12 @@
-const axios = require('axios');
-const finalResponse = require('../../util/utils')
-
+const  axios = require('axios');
+const  finalResponse = require('../../util/utils');
+/**
+ *  Stock prices service responsible for retrieving the stock quote data from finhub side. In case of validation throw an error, which is handled in the global error handler.
+ * */
 function stockPricesService() {
 
-    var companyName;
-
-    function setCompanyName(name) {
-        companyName = name;
-    }
-
-    function convertTimeStampToDate(timeStampt) {
-        return new Date(timeStampt * 1000).toLocaleString();
+    function convertTimeStampToDate(timeStamp) {
+        return new Date(timeStamp * 1000).toLocaleString();
     }
 
     function stockPricesResponse(finhubResponse) {
@@ -24,9 +20,9 @@ function stockPricesService() {
         }
     }
 
-    function getStockPricesByName() {
+    function getStockPricesByName(companyName) {
         if (companyName) {
-            return axios.get(`https://finnhub.io/api/v1/quote?symbol=` + companyName + `&token=` + process.env.FINHUBTOKEN)
+            return axios.get(finalResponse.urlFinHub + companyName + finalResponse.urlToken + process.env.FINHUBTOKEN)
                 .then((response) => {
                     const jsonText = JSON.stringify(response.data);
                     if (jsonText === "\"Symbol not supported\"") {
@@ -36,13 +32,12 @@ function stockPricesService() {
                         return stockPricesResponse(responseObject);
                     }
                 }).catch(error => {
-                console.error(error);
                 throw error;
             });
         }
     }
 
-    return {getStockPricesByName,setCompanyName };
+    return {getStockPricesByName,convertTimeStampToDate};
 }
 
 module.exports = stockPricesService();

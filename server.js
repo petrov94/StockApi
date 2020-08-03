@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const api = require('./server/api/api');
 const errorMessages = require('./server/util/utils');
-// setup the app middlware
-require('./server/middleware/appMiddlware')(app);
+require('dotenv').config();
 
 // setup the api
-app.use('/api', api);
+app.use('/api/' + process.env.VERSION, api);
 // set up global error handling
 
 app.use(function(err, req, res, next) {
@@ -16,10 +15,10 @@ app.use(function(err, req, res, next) {
     }
     // if error thrown from jwt validation check
     if (err.includes('401')) {
-        res.status(401).json({"Message" : err});
+        res.status(401).json({"Message" : errorMessages.invalidToken});
         return;
     }
-    res.status(500).json({"Message" : err});
+    res.status(500).json({"Message" : err.message});
 });
 
 // export the app for testing
