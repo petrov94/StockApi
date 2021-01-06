@@ -11,7 +11,7 @@
     "JSON": "^1.0.0",
     "acorn": "^7.2.0",
     "all": "0.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "check-ticker-symbol": "^1.0.0",
