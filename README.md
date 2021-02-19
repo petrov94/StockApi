@@ -1,4 +1,4 @@
-# ModusBox Stock Api
+# Stock Api
 
 ## Description
 Dockerised Node.js Rest Service based on Express.js. 
