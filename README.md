@@ -17,9 +17,9 @@ In the current version of the app the listed functionalities are supported:
 ## Common setup
 Clone the repo and install the dependencies.
 ```
-git clone https://gitlab.com/petrov94/modusbox-stock-api.git
+git clone https://github.com/petrov94/StockApi.git
 
-cd modusbox-stock-api
+cd stock-api
 
 touch .env
 ```
@@ -44,7 +44,7 @@ in the main directory.
 
 To create a docker image.
 ``` 
- docker build . -t modusbox-stock-api:v1 
+ docker build . -t stock-api:v1 
 ``` 
 
 To create two pods with the already created image.
